@@ -1,0 +1,30 @@
+Socket
+
+public void onResume(){
+	cria o vetor de sensores
+	, pega os valores e 
+	inicia o programa
+	
+}
+
+public void onPause(){
+	para os sensores
+	seta zeros nos textView zero
+}
+
+public void enviar_dados(){
+	chama a função do socket para o envio dos dados
+}
+
+public void onSensorChanged(){
+	seta os valores dos sensores no textView,
+	adiciona as variaveis v1,v2 e v3 respectivamente os valores de x, y e z,
+	adiciona os valores de v1,v2 e v3 no vetor de valores.
+}
+
+class BackgroundTesk extends AsynkTask<>{
+	cria o socket e
+	envia os valores do vetor
+}
+
+

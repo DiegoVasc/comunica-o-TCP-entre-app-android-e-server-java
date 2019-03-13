@@ -1,0 +1,85 @@
+Trabalhosdrefatorado 
+
+//declara as variaveis ultilizadas para tcp
+    static Socket s;
+    static ServerSocket ss;
+    static InputStreamReader isr;
+    static BufferedReader br;
+    static String mensagem = "";
+
+// variaveis auxiliares
+   static ArrayList<String> acelerometro = new ArrayList();//recebe os valores mandados pelo cliente android via sockets
+    static String dados;//campo que recebera os valores da mensagem para separar no array de String acelerometro_dados
+    static String acelerometro_dados[] = new String[2000];//array onde armazena os dados separados
+ 
+    static ArrayList<Double> numx = new ArrayList<Double>();//armazena a posição x geradas do velocimetro
+    static ArrayList<Double> numy = new ArrayList<Double>();//armazena a posição y geradas do velocimetro
+    static ArrayList<Double> numz = new ArrayList<Double>();//armazena a posição z geradas do velocimetro
+
+//dentro do public static void main
+try {
+            ss = new ServerSocket(6000);
+            while(true){
+            s = ss.accept();
+            isr = new InputStreamReader(s.getInputStream());
+            br = new BufferedReader(isr);
+            mensagem = br.readLine();
+           
+            acelerometro.add(mensagem);//arraylist onde recebera o pacote de com os dados do android app
+            int n = acelerometro.size();//pega o tamanho do arraylist para ultilizar no "for" a seguir
+            for(int i=0;i<n;i++){
+                dados=acelerometro.get(i);//recebe os dados sem separar-los
+                acelerometro_dados = dados.split(" ");//separa os dados recebidos da variavel "dados" para separar onde a quebra de linha(space)
+                 //System.out.printf(acelerometro.get(i));//printa na saida os dados recebidos
+            
+            }
+            int j=-1;//variavel auxiliar para mostra os dados
+            int i;
+              int x,y,z;
+              x= y = z=-1;
+           for(i=0;i<acelerometro_dados.length;i++){
+                if(i %3 == 0){
+                    j++;
+                   
+                    numx.add(Double.parseDouble(acelerometro_dados[j]));
+                   
+                    // System.out.println("\nx:"+acelerometro_dados[j]);
+                    jTextArea1.append("\nx:" + acelerometro_dados[j]);//printa da jtextarea os dados do acelerador x
+                                 
+                    j++;
+                    numy.add(Double.parseDouble(acelerometro_dados[j])); //printa da jtextarea os dados do acelerador y
+                    
+                    jTextArea1.append("\ny:" + acelerometro_dados[j]);//printa da jtextarea os dados do acelerador z
+                    //System.out.println("\ny:"+acelerometro_dados[j]);
+                    
+                    j++;
+                   
+                    numz.add(Double.parseDouble(acelerometro_dados[j])); 
+                    
+                    jTextArea1.append("\nz:" + acelerometro_dados[j]);
+                   // System.out.println("\nz:"+acelerometro_dados[j]);
+                    jTextArea1.append("\n");
+                    
+                    //System.out.println(numy[y]+"\n");
+                   // System.out.println(numz[z]+"\n");
+                   // System.out.println("\n");
+                    
+                    
+
+                } 
+            }
+   
+           
+
+           // System.out.println(mensagem);// onde mostrava inicialmente a mensagem inicial na saida(teste de saida) 
+            
+            //jTextArea1.append(mensagem); // printa na tela jtextArea as informações recebidas.
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            
+        }
+as demais funcoes sao criadas automaticamente pelo jframe;
+__________________________________________________________________________________________________________________________
+as outras  duas classes uma classe so brincando com algumas coisas e a outra classe tem um modelo de como gerar graficos onde seriam instanciados os dados do arraylist numx,numy,numy
+para mostra em um grafico

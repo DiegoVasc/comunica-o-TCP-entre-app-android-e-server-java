@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:layout_marginTop="75px"
+    android:layout_marginLeft="50px"
+    android:layout_marginRight="50px"
+    >
+
+    <TextView
+        android:id="@+id/xID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="X: 0.00000" />
+
+    <TextView
+        android:id="@+id/yID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Y: 0.00000" />
+
+    <TextView
+        android:id="@+id/zID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Z: 0.00000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="400px">
+
+        <Button
+            android:id="@+id/bt_inicia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onResume"
+            android:text="Iniciar" />
+
+        <Button
+            android:id="@+id/bt_enviar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="enviar_dados"
+            android:text="Enviar" />
+
+        <Button
+            android:id="@+id/bt_pausa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onPause"
+            android:text="Parar" />
+    </LinearLayout>
+
+</LinearLayout>
